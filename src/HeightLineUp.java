@@ -3,6 +3,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
+
+/*
+    Find number of people shorter than the current student
+    behind him for each student and then output and then
+    output as an array.
+    Constraint: O(n)
+ */
+
+
+
+
+
 public class HeightLineUp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -20,28 +32,24 @@ public class HeightLineUp {
     }
     
     public static int[] findLineup(int[] people) {
-        int[] answers = new int[people.length];
         Stack<Integer> heights = new Stack<>();
-
-        int offset = 0;
+        int[] answer = new int[people.length];
 
         for (int i = 0; i < people.length; i++) {
-            boolean found = false;
-            while (!heights.isEmpty() && !found) {
+            while (!heights.isEmpty()) {
                 if (people[heights.peek()] >= people[i]) {
-                    found = true;
+                    break;
                 } else {
                     heights.pop();
                 }
             }
-            if (!heights.isEmpty()) {
-               offset = heights.peek() + 1;
+            if (heights.isEmpty()) {
+                answer[i] = i;
             } else {
-                offset = 0;
+                answer[i] = i - heights.peek() - 1;
             }
-            answers[i] = i - offset;
             heights.push(i);
         }
-        return answers;
+        return answer;
     } 
 }
