@@ -29,7 +29,6 @@ public class sortedSquarredArray {
                 --end;
             }
 
-            if (idx < 0) break;
             sorted[idx] = (int) Math.pow(array[start], 2);
             --idx;
         }
