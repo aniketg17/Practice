@@ -36,7 +36,7 @@ public class ChainReaction {
 
         Arrays.sort(balloons);
         int max = -10;
-        for (int idx = 0; idx < balloons.length; idx++) {
+        for (int idx = 0; idx < balloons.length; idx++) { // attempt to pop first balloon at each position
             int[] copied = Arrays.copyOf(balloons, balloons.length);
             int popped = pop(idx, copied);
             max = Math.max(max, popped);
@@ -46,17 +46,18 @@ public class ChainReaction {
 
     private static int pop(int idx, int[] balloons) {
         int radius = 1;
-        int start = balloons[idx];
-        int temp = start;
+        int start = balloons[idx]; // starting balloon
+        int temp = start; // temp variable to store value for second loop
         int balloonsBurst = 1;
         balloons[idx] = -10;
         int i = idx + 1;
         int prev = 0;
-        boolean burst;
+        boolean burst; // boolean to check if balloon burst in 1 iteration or not. if not, then break
+
         while (i < balloons.length) {
             burst = false;
             while (i < balloons.length && balloons[i] - start <= radius) {
-                prev = balloons[i];
+                prev = balloons[i]; // storing current variable because the array value gets changed in next line
                 balloons[i] = -10;
                 ++balloonsBurst;
                 ++i;
@@ -65,14 +66,16 @@ public class ChainReaction {
             if (!burst) {
                 break;
             }
-            start = prev;
+            start = prev; // assigning last popped balloon's value
             ++radius;
         }
 
+        // resetting variables
         start = temp;
         radius = 1;
         i = idx - 1;
 
+        // repeating process but now decrementing pointer
         while (i >= 0) {
             burst = false;
             while (i >= 0 && start - balloons[i] <= radius) {
