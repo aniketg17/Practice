@@ -1,3 +1,5 @@
+package CompetitiveProgramming;
+
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.*;
 

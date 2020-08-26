@@ -1,3 +1,5 @@
+package CompetitiveProgramming;
+
 import java.util.*;
 
 public class EvenUpSolitaire {

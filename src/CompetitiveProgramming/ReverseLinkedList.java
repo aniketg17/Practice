@@ -1,3 +1,5 @@
+package CompetitiveProgramming;
+
 public class ReverseLinkedList {
     private static class Node {
         int val;
