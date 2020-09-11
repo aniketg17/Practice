@@ -40,7 +40,7 @@ int main() {
     int val = 5; // local tests with 23, 26, 40
     target = val;
     curr_sum = 0;
-    sort(input.begin(), input.end(), greater()); // sort in descending for greedy approach
+    sort(input.begin(), input.end(), greater());
     runner(input, 0);
     vector<int> combo;
     for (int x : ret) {
